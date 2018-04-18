@@ -60,6 +60,12 @@ void loop() {
     }
     digitalWrite(12, LOW);
     digitalWrite(11, LOW);
+
+
+
+    testing();
+
+
     //all_high();
     //delay(200);
 
