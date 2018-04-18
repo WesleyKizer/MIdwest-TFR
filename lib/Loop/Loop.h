@@ -14,10 +14,6 @@ void xbee_switch();
 void xbee_activeroll();
 
 
-//LED related functions
-void update_display();
-void state_no_signal();
-
 
 
 #endif

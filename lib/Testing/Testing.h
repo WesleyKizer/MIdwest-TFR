@@ -6,9 +6,6 @@
 
 
 //testing functions
-void all_high();
-void all_low();
-void all_colors();
 void alphabet();
 
 
