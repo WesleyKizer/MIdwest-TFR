@@ -6,6 +6,12 @@
 #include <Loop.h>
 #include <Testing.h>
 
+/////////////////////////////////////////////////
+char stuff[80] = {99,9,9,99,99,1,0,0,0,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,0,1,0,1,1};
+////////////////////////////////////////
+
+
+
 
 SoftwareSerial Xbee(0, 1); // RX, TX
 struct led_display_state state;
@@ -52,6 +58,10 @@ void loop() {
     };*/
 
 
+    for(int i = 0; i < 80; i++)
+       Xbee.write(stuff[i]);
+
+
     if(Xbee.available() > 0) {
         digitalWrite(12, HIGH);
         digitalWrite(11, HIGH);
@@ -61,9 +71,6 @@ void loop() {
     digitalWrite(12, LOW);
     digitalWrite(11, LOW);
 
-
-
-    testing();
 
 
     //all_high();
