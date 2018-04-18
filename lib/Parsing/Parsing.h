@@ -8,9 +8,9 @@ omega_reading, d_error;
 int hold_time;
 bool is_done, roll_direction, liftoff, burnout, apogee, emergency, IMU_1,
 IMU_2, IMU_3, TFC_1, TFC_2, TFC_3;
-};
+}TFC1,TFC2,TFC3;
 
-struct TFC TFC1, TFC2, TFC3;
+//struct TFC TFC1, TFC2, TFC3;
 
 void parseData(char packet[]);
 void setDataFloat(char packet[], float& fdata, int& count, char*);

@@ -42,7 +42,7 @@ void setDataFloat(char packet[], float& fdata, int& count, char* pointer){
 
 void clearData(char* pointer){
 for(int i = 0; i < datSize; i++)
-  pointer[i] = NULL;
+  pointer[i] = '\0';
 }
 
 void setDataBool(char packet[], bool& bdata, int& count, char* pointer){
