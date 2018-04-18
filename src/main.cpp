@@ -14,13 +14,13 @@ char stuff[80] = {99,9,9,99,99,1,0,0,0,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,0,1,0,1,1};
 
 
 SoftwareSerial Xbee(0, 1); // RX, TX
+
 static char packet[80];
 int size = 0;
 elapsedMillis t_sinceAquisition;
 
 
 void setup() {
-    Serial.begin(9600);
     Xbee.begin(9600);
 }
 
