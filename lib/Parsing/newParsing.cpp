@@ -1,5 +1,6 @@
 #include "PARSING.h"
 #include "newParsing.h"
+#include "Declarations.h"
 
 using namespace std;
 
