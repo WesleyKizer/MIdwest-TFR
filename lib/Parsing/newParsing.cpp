@@ -5,7 +5,7 @@ using namespace std;
 
 //gloabal struct == global
 
-void newParse(packet[]){
+int newParse(char packet[]){
   int count = 5;
   char security[2];
   char TFC;
@@ -14,17 +14,17 @@ void newParse(packet[]){
   security[1] = '2';
   for(int i = 0; i < 2; i++){
       if(security[i] != packet[i])
-        return;
+        return NULL;
   }
   TFC = packet[2];
   if(TFC < 1 || TFC > 3)
-    return;
+    return NULL;
   dataPiece[0] = packet[3];
   dataPiece[1] = packet[4];
   dataPiece[2] = '\0';
   int dataPlace = atoi(dataPiece);
-  if(dataPlace < 1 || dataPlace > 13)
-    return;
+  if(dataPlace < 1 || dataPlace > 33)
+    return NULL;
   int newCount = 0;
   while(packet[count] != '\r'){
     newCount++;
@@ -34,107 +34,127 @@ void newParse(packet[]){
   char data[newCount + 1];
   data[newCount] = '0';
   for(int i = 0; i < newCount; i++){
-    data[i] = packet[count]
+    data[i] = packet[count];
     count++;
   }
   returnData(dataPlace, data);
+  return NULL;
 }
 
 void returnData(int place, char datArray[]){
+    bool datBool;
+    int intData;
+    float dumby;
+
   if(place <= 14){
     if(datArray[0] == 'T')
-      bool datBool = TRUE;
+      datBool = TRUE;
     else
-      bool datBool = FALSE;
+      datBool = FALSE;
     }
   else if(place >= 15 && place < 18)
-    int intData = atoi(datArray);
+    intData = atoi(datArray);
   else
-    float dumby = atof(datArray);
+    dumby = atof(datArray);
   switch(place) {
     case 1:
-      TFC1.IMU_connected = datBool,
+      TFC1.IMU_connected = datBool;
       break;
     case 2:
-      TFC1.TFC_L_connected = datBool,
+      TFC1.TFC_L_connected = datBool;
       break;
     case 3:
-      TFC1.TFC_R_connected = datBool,
+      TFC1.TFC_R_connected = datBool;
       break;
     case 4:
-      global.liftoff = datBool,
+      global.liftoff = datBool;
       break;
     case 5:
-      global.burnout = datBool,
+      global.burnout = datBool;
       break;
     case 6:
-      global.apogee = datBool,
+      global.apogee = datBool;
       break;
     case 7:
-      global.falling = datBool,
+      global.falling = datBool;
       break;
     case 8:
-      global.emergency = datBool,
+      global.emergency = datBool;
       break;
     case 9:
-      global.is_done = datBool,
+      global.is_done = datBool;
       break;
     case 10:
-      global.roll_direction = datBool,
+      global.roll_direction = datBool;
       break;
     case 11:
-      global.open_valves = datBool,
+      global.open_valves = datBool;
       break;
     case 12:
-      global.TFC_1_connected = datBool,
+      global.TFC_1_connected = datBool;
       break;
     case 13:
-      global.TFC_2_connected = datBool,
+      global.TFC_2_connected = datBool;
       break;
     case 14:
-      global.TFC_3_connected = datBool,
+      global.TFC_3_connected = datBool;
       break;
     case 15:
-      TFC1.timestamp = intData,
+      TFC1.timestamp = intData;
       break;
     case 16:
-      global.hold_time = intData,
+      global.hold_time = intData;
       break;
     case 17:
-      global.current_time = intData,
+      global.current_time = intData;
       break;
     case 18:
-      TFC1.current_direction = dumby,
+      TFC1.current_direction = dumby;
       break;
     case 19:
-      TFC1.altitude = dumby,
+      TFC1.altitude = dumby;
       break;
     case 20:
-      TFC1.pressure = dumby,
+      TFC1.pressure = dumby;
       break;
     case 21:
-      TFC1.temp = dumby,
+      TFC1.temp = dumby;
       break;
     case 22:
-      TFC1.roll = dumby,
+      TFC1.roll = dumby;
       break;
     case 23:
-      TFC1.pitch = dumby,
+      TFC1.pitch = dumby;
       break;
     case 24:
-      TFC1.yaw = dumby,
+      TFC1.yaw = dumby;
       break;
     case 25:
-      TFC1.acceleration = dumby,
+      TFC1.acceleration = dumby;
       break;
     case 26:
-      TFC1.velocity = dumby,
+      TFC1.velocity = dumby;
       break;
     case 27:
-      global.setpoint = dumby,
+      TFC1.error = dumby;
       break;
     case 28:
-      global.last_setpoint = dumby,
+      TFC1.last_error = dumby;
+      break;
+    case 29:
+      TFC1.integral_error = dumby;
+      break;
+    case 30:
+      TFC1.omega_reading = dumby;
+      break;
+    case 31:
+      TFC1.d_error = dumby;
+      break;
+    case 32:
+      global.setpoint = dumby;
+      break;
+    case 33:
+      global.last_setpoint = dumby;
       break;
   }
 }
