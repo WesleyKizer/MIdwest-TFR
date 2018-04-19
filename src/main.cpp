@@ -22,9 +22,10 @@ elapsedMillis t_sinceAquisition;
 
 void setup() {
     Xbee.begin(9600);
+    Serial.begin(9600);
 }
 
-
+elapsedMillis T_sincetransmit;
 void loop() {
 
     /*xbee_connected();   //check if the xbee is physically connected to the arduino
@@ -39,8 +40,13 @@ void loop() {
     };*/
 
 
-    if(Xbee.peek() > 0) {
-            Serial.write(Xbee.read());
+    if(Xbee.available() > 0) {
+        Serial.write(Xbee.read());
+    }
+
+    if(T_sincetransmit >= 90) {
+        alphabet();
+        T_sincetransmit = 0;
     }
 
 }
