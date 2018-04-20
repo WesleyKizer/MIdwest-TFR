@@ -8,13 +8,20 @@
 void TFC_receive();
 void ground_transmit();
 void sd_record();
-void LED_update();
+void LED_update(int);
 void process_input();
 
 SoftwareSerial Xbee(0, 1); // RX, TX
 
 char packet[80];
 int size = 0;
+
+
+int LED_red = 1;//pin
+int LED_blue = 2;//pin
+int LED_green = 3;//pin
+
+    
 
 struct global_data global;
 struct TFC_data TFC1, TFC2, TFC3;
@@ -29,6 +36,9 @@ elapsedMillis T_sinceGlobal;
 
 
 void setup() {
+    pinMode(LED_red, OUTPUT);
+    pinMode(LED_blue, OUTPUT);
+    pinMode(LED_green, OUTPUT);
     //setup pinmodes here
     //setup TFC connection here
     Xbee.begin(9600);
@@ -80,7 +90,24 @@ void TFC_receive() {
 
 
 void LED_update() {
-
+    if(global.open_valves){
+        if(global.roll_direction){
+            digitalWrite(LED_green, LOW);
+            digitalWrite(LED_blue, LOW);
+            digitalWrite(LED_red, HIGH);
+            //set LED to Red?
+        }else{
+            digitalWrite(LED_green, LOW);
+            digitalWrite(LED_blue, HIGH);
+            digitalWrite(LED_red, LOW);
+            //set LED to blue?
+        }    
+    }else{
+        digitalWrite(LED_green, HIGH);
+        digitalWrite(LED_blue, LOW);
+        digitalWrite(LED_red, LOW);
+        //set LED to GREEN?
+    }    
 }
 
 
