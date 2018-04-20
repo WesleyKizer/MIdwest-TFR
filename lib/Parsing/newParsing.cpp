@@ -107,7 +107,7 @@ void returnData(int place, char datArray[]){
       global.hold_time = intData;
       break;
     case 17:
-      global.current_time = intData;
+      global.local_time = intData;
       break;
     case 18:
       TFC1.current_direction = dumby;

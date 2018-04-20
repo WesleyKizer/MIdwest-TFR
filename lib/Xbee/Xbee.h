@@ -6,6 +6,7 @@
 
 
 int read_packet(int readch, char *buffer, int len);
+void alphabet();
 
 
 #endif

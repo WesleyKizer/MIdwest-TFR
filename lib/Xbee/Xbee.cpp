@@ -30,3 +30,15 @@ int read_packet(int readch, char *buffer, int len)
   // No end of line has been found, so return -1.
   return -1;
 }
+
+
+void alphabet() {
+    static char c = 'A';
+
+    Xbee.print( c );
+
+    //get the next letter in the alphabet, and reset to 'A' once we have reached 'Z'
+    c = c + 1;
+    if ( c>'Z' )
+         c = 'A';
+}
