@@ -86,7 +86,7 @@ void LED_update() {
 
 void sd_record() {
     //::TODO add fields to write to sd card that shows whether the state has actually been updated since the last time
-    if(T_sinceRecorded >= redcordRate_T) {
+    if(T_sinceRecorded >= recordRate_T) {
         //add a data logging function here, should write the state of all structs
         T_sinceRecorded = 0;
     }

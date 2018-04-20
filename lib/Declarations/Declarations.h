@@ -7,7 +7,7 @@
 #include <elapsedMillis.h>
 
 
-#define redcordRate_T 100
+#define recordRate_T 100
 #define transmitRate_T 99
 
 
