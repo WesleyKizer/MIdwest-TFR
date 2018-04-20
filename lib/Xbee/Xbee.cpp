@@ -1,33 +1,6 @@
 #include "Xbee.h"
 
 
-
-
-void xbee_connected() {
-    //this occurs when there is a loose connection with the xbee
-    while(!(Xbee.isListening()))
-    {
-        //state_no_signal();
-        Serial.println("There is a problem with the xbee physical connection.");
-    };
-};
-
-
-bool xbee_signal() {
-    //occurs when too mcuh time has passed since a signal was received from the xbee
-    if(Xbee.peek() != 0) {
-        t_sinceAquisition = 0;
-        return 1;
-    } else {
-        Serial.print("There has been no signal from rocket since ");
-        Serial.println(t_sinceAquisition, DEC);
-        //state_no_signal();
-        return 0;
-    }
-};
-
-
-
 /*
 takes an incoming character (provided by Serial.read()), and decides what to do with it
      - If new line character (‘\n’), then ignored and thrown away

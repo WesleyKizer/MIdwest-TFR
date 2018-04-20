@@ -1,9 +1,15 @@
 #ifndef _DEFINITIONS_H_
 #define _DEFINITIONS_H_
 
+
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include <elapsedMillis.h>
+
+#define redcordRate_T 100
+#define transmitRate_T 99
+
+
 
 struct TFC_data {
     bool IMU_connected = 0;
@@ -29,13 +35,14 @@ struct TFC_data {
     float d_error = 0.0;
 };
 
+
 struct global_data {
     float setpoint = 0.0;
     float last_setpoint = 0.0;
     int hold_time = 0;
-    int current_time = 0; //the synced timing
-    //add time variable for timing variable stuff
+    int global_time = 0; //the synced timing
 
+    int local_time = 0; //timing of the current system state
     bool liftoff = 0;
     bool burnout = 0;
     bool apogee = 0;
@@ -52,13 +59,14 @@ struct global_data {
     bool TFC_3_connected = 0;
 };
 
+
+extern char packet[80];
+extern int size;
+
 extern struct global_data global;
 extern struct TFC_data TFC1, TFC2, TFC3;
+
 extern SoftwareSerial Xbee;
-extern struct led_display_state state;
-
-
-extern elapsedMillis t_sinceAquisition;
 
 
 #endif

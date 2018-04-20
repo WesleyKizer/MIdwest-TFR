@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/*
 const int datSize = 10;
 const int numFDataPoints = 16;
 const int numBDataPoints = 12;
@@ -99,3 +100,4 @@ void sendDatTFC(float fdataArr[], bool bDataArr[], int hTime){
   TFC1.TFC_3 = bDataArr[11];
   TFC1.hold_time = hTime;
 }
+*/
