@@ -27,6 +27,7 @@ elapsedMillis T_sinceTFC3;
 elapsedMillis T_sinceGlobal;
 
 
+
 void setup() {
     //setup pinmodes here
     //setup TFC connection here
@@ -34,6 +35,7 @@ void setup() {
     //add function to setup sd card here
     //add function to print sd card header stuff here
 }
+
 
 
 void loop() {
